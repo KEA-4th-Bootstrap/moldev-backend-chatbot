@@ -1,0 +1,6 @@
+llama-index-embeddings-azure-openai
+llama-index-llms-azure-openai
+fastapi
+uvicorn
+load_dotenv
+boto3
