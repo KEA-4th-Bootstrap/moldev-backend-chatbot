@@ -10,9 +10,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                withCredentials([file(credentialsId: 'chatbot-env', variable: 'env')]) {
+                withCredentials([file(credentialsId: 'chatbot-env', variable: 'chatbot')]) {
                     sh """
-                            cp -f ${env} .env
+                            cp -f ${chatbot} .env
                             cat .env
                     """
                 }
