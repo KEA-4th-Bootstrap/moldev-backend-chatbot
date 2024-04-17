@@ -74,12 +74,12 @@ def save_post_md(member_id):
     print("[DOWNLOAD COMPLETE] : ")
 
 
-@app.get("/")
+@app.get("/api/health-check")
 async def root():
-    return {"message": "Hello World"}
+    return {"੯•́ʔ̋ ͙͛*͛ ͙͛*͛ ͙͛̋و"}
 
 
-@app.get("/chatbot/{member_id}")
+@app.get("/api/chatbots/{member_id}")
 async def say_hello(member_id: int, query: str = Query(...)):
     save_post_md(member_id)
     response = send_query(member_id, query)
