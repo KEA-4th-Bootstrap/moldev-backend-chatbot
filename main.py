@@ -5,8 +5,22 @@ from llama_index.llms.azure_openai import AzureOpenAI
 from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, ServiceContext, set_global_service_context
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# origins에는 protocal, domain, port만 등록한다.
+origins = [
+    "*" # private 영역에서 사용한다면 *로 모든 접근을 허용할 수 있다.
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True, # cookie 포함 여부를 설정한다. 기본은 False
+    allow_methods=["*"],    # 허용할 method를 설정할 수 있으며, 기본값은 'GET'이다.
+    allow_headers=["*"],	# 허용할 http header 목록을 설정할 수 있으며 Content-Type, Accept, Accept-Language, Content-Language은 항상 허용된다.
+)
 
 @app.on_event("startup")
 async def startup_event():
