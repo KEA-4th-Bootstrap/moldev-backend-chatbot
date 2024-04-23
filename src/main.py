@@ -22,7 +22,7 @@ async def startup_event():
 
     llm = AzureOpenAI(
         model=open_ai_model,
-        engie=open_ai_model,
+        engine=open_ai_model,
         deployment_name=open_ai_model_name,
         api_key=open_api_key,
         azure_endpoint=azure_openai_endpoint,
