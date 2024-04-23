@@ -4,9 +4,9 @@ COPY . /src
 WORKDIR /src
 
 
-COPY ./requirements.txt /src/requirements.txt
+COPY ./requirements/requirements.txt /src/requirements.txt
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install  --no-cache-dir -r /src/requirements.txt
 
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0"]
