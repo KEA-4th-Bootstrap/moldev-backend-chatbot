@@ -22,6 +22,11 @@ async def startup_event():
     open_ai_model_name = os.getenv('OPENAI_MODEL_DEPLOYMENT_NAME')
     open_ai_embedding_model_name = os.getenv('OPENAI_EMBEDDING_MODEL_DEPLOYMENT_NAME')
 
+    print(open_ai_model)
+    print(open_ai_model_name)
+    print(open_api_key)
+    print(azure_openai_endpoint)
+    print(open_api_version)
     llm = AzureOpenAI(
         model=open_ai_model,
         deployment_name=open_ai_model_name,
