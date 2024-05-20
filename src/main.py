@@ -23,9 +23,9 @@ async def startup_event():
     open_ai_embedding_model_name = os.getenv('OPENAI_EMBEDDING_MODEL_DEPLOYMENT_NAME')
 
     llm = AzureOpenAI(
-        model=open_ai_model,
-        engine=open_ai_model_name,
-        # deployment_name=open_ai_model_name,
+        model_name=open_ai_model,
+        # engine=open_ai_model_name,
+        deployment_name=open_ai_model_name,
         api_key=open_api_key,
         azure_endpoint=azure_openai_endpoint,
         api_version=open_api_version,
@@ -33,9 +33,9 @@ async def startup_event():
 
     # 모델 생성
     embed_model = AzureOpenAIEmbedding(
-        model=open_ai_embedding_model,
-        engine=open_ai_embedding_model_name,
-        # deployment_name=open_ai_embedding_model_name,
+        model_name=open_ai_embedding_model,
+        # engine=open_ai_embedding_model_name,
+        deployment_name=open_ai_embedding_model_name,
         api_key=open_api_key,
         azure_endpoint=azure_openai_endpoint,
         api_version=open_api_version,
