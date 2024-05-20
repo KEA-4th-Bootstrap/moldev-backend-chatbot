@@ -7,7 +7,9 @@ import os
 from dotenv import load_dotenv
 from src.chatbots.router import router as chatbot_router
 
+load_dotenv()
 app = FastAPI()
+
 
 @app.on_event("startup")
 async def startup_event():
@@ -22,7 +24,6 @@ async def startup_event():
 
     llm = AzureOpenAI(
         model=open_ai_model,
-        engine=open_ai_model,
         deployment_name=open_ai_model_name,
         api_key=open_api_key,
         azure_endpoint=azure_openai_endpoint,
@@ -32,7 +33,6 @@ async def startup_event():
     # 모델 생성
     embed_model = AzureOpenAIEmbedding(
         model=open_ai_embedding_model,
-        engine=open_ai_embedding_model,
         deployment_name=open_ai_embedding_model_name,
         api_key=open_api_key,
         azure_endpoint=azure_openai_endpoint,
@@ -46,6 +46,7 @@ async def startup_event():
 
     set_global_service_context(service_context)
 
+
 origins = [
     "*"
 ]
@@ -57,6 +58,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/api/chatbots/healthcheck", include_in_schema=False)
 async def healthcheck() -> dict[str, str]:
