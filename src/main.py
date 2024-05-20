@@ -75,4 +75,4 @@ async def healthcheck() -> dict[str, str]:
     return {"result": "੯•́ʔ̋ ͙͛*͛ ͙͛*͛ ͙͛̋و"}
 
 
-app.include_router(chatbot_router, prefix="/api/chatbots", tags=["Chatbot"])
+app.include_router(chatbot_router, prefix="/api/chatbot", tags=["Chatbot"])
