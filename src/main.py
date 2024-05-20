@@ -25,7 +25,7 @@ async def startup_event():
     llm = AzureOpenAI(
         model_name=open_ai_model,
         # engine=open_ai_model_name,
-        deployment_name=open_ai_model_name,
+        deployment=open_ai_model_name,
         api_key=open_api_key,
         azure_endpoint=azure_openai_endpoint,
         api_version=open_api_version,
@@ -35,7 +35,7 @@ async def startup_event():
     embed_model = AzureOpenAIEmbedding(
         model_name=open_ai_embedding_model,
         # engine=open_ai_embedding_model_name,
-        deployment_name=open_ai_embedding_model_name,
+        deployment=open_ai_embedding_model_name,
         api_key=open_api_key,
         azure_endpoint=azure_openai_endpoint,
         api_version=open_api_version,
