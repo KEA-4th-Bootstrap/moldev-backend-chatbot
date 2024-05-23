@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11.9
 
 COPY . /src
 WORKDIR /src
