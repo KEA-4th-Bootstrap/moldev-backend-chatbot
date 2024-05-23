@@ -6,6 +6,7 @@ router = APIRouter()
 
 @router.get("/{member_id}", status_code=status.HTTP_200_OK, response_model=ChatBotResponse)
 async def register_user(member_id: int, query: str = Query(...)):
+    print("[INPUT] : member_id - ", member_id, " | query - ", query)
     await service.save_post_md(member_id)
     result = await service.send_query(member_id, query)
     return {
