@@ -14,7 +14,10 @@ pipeline {
                     sh """
                             cp -f ${chatbot} .env
                             cat .env
-                            mkdir post-md
+                            if [ ! -d "post-md" ]; then
+                                mkdir post-md
+                            fi
+
                     """
                 }
             }
