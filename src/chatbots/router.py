@@ -4,11 +4,12 @@ from src.chatbots.schemas import ChatBotResponse
 
 router = APIRouter()
 
-@router.get("/{member_id}", status_code=status.HTTP_200_OK, response_model=ChatBotResponse)
-async def register_user(member_id: int, query: str = Query(...)):
+@router.post("", status_code=status.HTTP_200_OK, response_model=ChatBotResponse)
+async def send_message(request: ChatBotRequest):
+    # 나중에 로그찍는걸로 바꿔도 좋을듯
     print("[INPUT] : member_id - ", member_id, " | query - ", query)
-    await service.save_post_md(member_id)
-    result = await service.send_query(member_id, query)
+    await service.save_post_md(request.member_id)
+    result = await service.send_query(request.member_id, request.query)
     return {
         "message": result
     }
