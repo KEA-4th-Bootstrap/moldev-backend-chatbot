@@ -16,7 +16,6 @@ client = boto3.client('s3',
                       )
 
 async def send_query(member_id: int, query: str):
-    print("[Send_query]")
     query += ', 반드시 한국말로 대답해줘'
     documents = SimpleDirectoryReader(
         input_files=['./post-md/' + str(member_id) + '.md']
@@ -27,7 +26,6 @@ async def send_query(member_id: int, query: str):
     return answer.response
 
 async def save_post_md(member_id: int):
-    print("[save_post_md]")
     bucket_name = 'moldev-s3-bucket'
     file_key = 'post-md/' + str(member_id) + '.md'
     download_path = './post-md/' + str(member_id) + '.md'
