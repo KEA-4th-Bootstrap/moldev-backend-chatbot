@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status, Query
 from src.chatbots import service
-from src.chatbots.schemas import ChatBotResponse
+from src.chatbots.schemas import ChatBotResponse, ChatBotRequest
 
 router = APIRouter()
 
