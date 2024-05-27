@@ -5,6 +5,6 @@ class ChatBotResponse(BaseModel):
     message: str
 
 class ChatBotRequest(BaseModel):
-    member_id: int = Field(..., alias='memberId')
+    moldev_id: int = Field(..., alias='moldevId')
     query: str
 

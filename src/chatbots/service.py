@@ -15,18 +15,18 @@ client = boto3.client('s3',
                       region_name=aws_region
                       )
 
-async def send_query(member_id: int, query: str):
+async def send_query(moldev_id: int, query: str):
     query += ', 반드시 한국말로 대답해줘'
     documents = SimpleDirectoryReader(
-        input_files=['./post-md/' + str(member_id) + '.md']
+        input_files=['./post-md/' + str(moldev_id) + '.md']
     ).load_data()
     index = VectorStoreIndex.from_documents(documents)
     query_engine = index.as_query_engine()
     answer = query_engine.query(query)
     return answer.response
 
-async def save_post_md(member_id: int):
+async def save_post_md(moldev_id: int):
     bucket_name = 'moldev-s3-bucket'
-    file_key = 'post-md/' + str(member_id) + '.md'
-    download_path = './post-md/' + str(member_id) + '.md'
+    file_key = 'post/' + str(moldev_id) + '_posts.md'
+    download_path = './post-md/' + str(moldev_id) + '.md'
     client.download_file(bucket_name, file_key, download_path)
